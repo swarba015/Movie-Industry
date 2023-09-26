@@ -23,27 +23,32 @@ df['company'].drop_duplicates(inplace=True)
 df.sort_values(by=['gross'], inplace=True, ascending=False)
 
 # Scatter plot with budget vs gross
+plt.figure(figsize=(8,5))
 plt.scatter(x=df['budget'], y=df['gross'])
-plt.title('Budget vs Gross Revenue')
 plt.ylim([0, 2*10**9])
 plt.xlabel('Gross Revenue')
 plt.ylabel('Budget for Films')
+plt.title('Budget vs Gross Revenue')
 plt.show()
 
 
 # Regplot budget vs gross
+plt.figure(figsize=(8,5))
 sns.regplot(x='budget', y='gross', data=df, scatter_kws={'color':'red'}, line_kws={'color':'blue'})
 plt.ylim([0, 2*10**9])
+plt.title('Budget vs Gross Revenue')
 plt.show()
 
 
 # Heatmap of correlation matrix
+plt.figure(figsize=(10,7))
 corr_mat = df.corr(method='pearson')
 sns.heatmap(corr_mat, annot=True)
 plt.title('Correlation Metric for Numeric Features')
 plt.xlabel('Movie Features')
 plt.ylabel('Movie Features')
 plt.show()
+
 
 
 # Numerization of Object Data Types
